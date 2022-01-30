@@ -22,11 +22,11 @@ router.get('/:id', async (req, res) => {
   try {
     const category = await Category.findByPk(req.params.id, {
       // JOIN with travellers, using the Trip through table
-      include: [{ Product }]
+      include: [Product],
     });
 
     if (!category) {
-      res.status(404).json({ message: 'No location found with this id!' });
+      res.status(404).json({ message: 'No product found with this id!' });
       return;
     }
 
